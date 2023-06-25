@@ -18,16 +18,15 @@ class_idx, confidence = net.Classify(img)
 
 class_desc = net.GetClassDesc(class_idx)
 
-day_counter = 0
-day_dictionary = {"day": 0}
+bear_counter = 0
+bear_dictionary = {"black bear": 0, "brown bear": 0}
 
-night_counter = 0
-night_dictionary = {"night": 0}
-
-if "day" or "Day" in class_desc:
-    day_counter += 1
-    elif "night" in class_desc:
-        night_dictionary["night"] += 1
+if "bear" or "Bear" in class_desc:
+    bear_counter += 1
+    if "black bear" in class_desc:
+        bear_dictionary["black bear"] += 1
+    elif "brown bear" in class_desc:
+        bear_dictionary["brown bear"] += 1
 
 
 print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format(class_desc, class_idx, confidence * 100))
